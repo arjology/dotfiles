@@ -11,8 +11,7 @@ general {
 order += "load"
 order += "cpu_temperature 0"
 order += "disk /"
-order += "disk /store"
-order += "ethernet enp1s0"
+order += "wireless wlp2s0"
 order += "volume master"
 order += "tztime local"
 
@@ -29,13 +28,19 @@ disk "/" {
         format = "<span background='#fec7cd'>  %free Free </span>"
 }
 
-disk "/store" {
-        format = "<span background='#fec7cd'>  %free Free </span>"
-}
-
-ethernet enp1s0 {
+wireless wlp2s0 {
         format_up = "<span background='#88c0d0'>  %ip </span>"
         format_down = "<span background='#88c0d0'>  Disconnected </span>"
+}
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
 }
 
 volume master {

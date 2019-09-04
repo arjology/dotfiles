@@ -1,5 +1,6 @@
 setxkbmap -layout "gb"
 TERM=xterm-256color
-#export LANGUAGE=en_US.utf8
-#export LC_ALL=en_US.utf8
-#export LC_LANG=en_US.utf8
+export PATH=$HOME/.local/bin:$PATH
+export LANGUAGE=en_GB.utf8
+export LC_ALL=en_GB.utf8
+export LC_LANG=en_GB.utf8
