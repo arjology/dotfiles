@@ -3,6 +3,7 @@
 (require-package 'badwolf-theme)
 (require-package 'zenburn-theme)
 (require-package 'solarized-theme)
+(require-package 'arc-dark-theme)
 
 ;; Function for cleaning switching themes
 (defun switch-theme (theme)

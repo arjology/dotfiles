@@ -6,7 +6,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
+"""Plugin 'altercation/vim-colors-solarized'
 Plugin 'klen/python-mode'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -100,7 +100,7 @@ set laststatus=0
 set encoding=utf8
 set modeline
 filetype plugin on
-"set mouse=a
+set mouse=a
 
 "    "
 " ui "
