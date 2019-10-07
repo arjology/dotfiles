@@ -36,7 +36,7 @@ bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
 bindsym $super+l exec --no-startup-id betterlockscreen -l dimblur --timestr="%I:%M:%S %p";
 bindsym $super+Shift+w exec chromium-browser
 bindsym $super+Shift+f exec thunar;workspace 3;focus
-bindsym $super+Shift+g exec emacs
+bindsym $super+Shift+e exec emacsclient -c -a emacs &
 
 #change volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+

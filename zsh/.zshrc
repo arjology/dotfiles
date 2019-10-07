@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -100,6 +100,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.purepower
 #PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 PATH=$HOME/.local/bin:$PATH
+SCAPE_HOME=/store/code/reconstruction_localization_pipeline
+PATH=$PATH:$SCAPE_HOME/bazel-python/bin
 POWERLEVEL10k_MODE='nerdfont-complete'
 POWERLEVEL10k_LEFT_PROMPT_ELEMENTS=(dir vcs newline status ssh)
 POWERLEVEL10k_RIGHT_PROMPT_ELEMENTS=(status virtualenv aws)

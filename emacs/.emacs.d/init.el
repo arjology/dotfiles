@@ -1,7 +1,22 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(cond
+ ((>= 24 emacs-major-version)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives
+           '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+  (package-refresh-contents)
+ )
+ )
 
 (package-initialize)
+
+;; Emacs IPython Notebook
+(require-package 'ein)
+(require 'ein)
+(require 'ein-notebook)
+(require 'ein-subpackages)
 
 (defun require-package (package)
   (setq-default highlight-tabs t)
@@ -276,13 +291,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(completion-cycle-threshold t)
- '(custom-enabled-themes (quote (solarized-dark)))
+ '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
     ("834cbeacb6837f3ddca4a1a7b19b1af3834f36a701e8b15b628cad3d85c970ff" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "73eacaf368e16cf41b125a1b6d3587308224d745fed432d641c54883ca3c55f0" "14a4bbd2207617728ea504ea9aa48416999a456db9f10e7d74baab896301d8a3" "d91ef4e714f05fff2070da7ca452980999f5361209e679ee988e3c432df24347" "a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" "24fc62afe2e5f0609e436aa2427b396adf9a958a8fa660edbaab5fb13c08aae6" "a7051d761a713aaf5b893c90eaba27463c791cd75d7257d3a8e66b0c8c346e77" "0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "c3d4af771cbe0501d5a865656802788a9a0ff9cf10a7df704ec8b8ef69017c68" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9")))
  '(package-selected-packages
    (quote
-    (hc-zenburn-theme elpygen restclient jinja2-mode evil-collection w3m eyebrowse lsp-ui cquery company-lsp lsp-mode elf-mode ag yasnippet cuda-mode cl-lib evil-escape helm powerline cmake-font-lock fill-column-indicator evil-magit linum-relative evil monokai-theme)))
+    (simple-httpd ein hc-zenburn-theme elpygen restclient jinja2-mode evil-collection w3m eyebrowse lsp-ui cquery company-lsp lsp-mode elf-mode ag yasnippet cuda-mode cl-lib evil-escape helm powerline cmake-font-lock fill-column-indicator evil-magit linum-relative evil monokai-theme)))
  '(projectile-other-file-alist
    (quote
     (("cpp" "h" "hpp" "ipp")
