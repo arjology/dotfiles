@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/arjang/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,6 +71,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git virtualenv bazel)
 
 source $ZSH/oh-my-zsh.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # User configuration
 
@@ -100,9 +101,11 @@ export LANG=en_US.UTF-8
 source $HOME/.purepower
 #PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 PATH=$HOME/.local/bin:$PATH
-SCAPE_HOME=/store/code/reconstruction_localization_pipeline
+SCAPE_HOME=$HOME/libs/reconstruction_localization_pipeline
 PATH=$PATH:$SCAPE_HOME/bazel-python/bin
 POWERLEVEL10k_MODE='nerdfont-complete'
-POWERLEVEL10k_LEFT_PROMPT_ELEMENTS=(dir vcs newline status ssh)
+POWERLEVEL10k_LEFT_PROMPT_ELEMENTS=(dir vcs status ssh)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs status ssh)
 POWERLEVEL10k_RIGHT_PROMPT_ELEMENTS=(status virtualenv aws)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status virtualenv aws)
 POWERLEVEL10k_PROMPT_ADD_NEWLINE=true
