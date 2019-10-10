@@ -13,10 +13,10 @@
 (package-initialize)
 
 ;; Emacs IPython Notebook
-(require-package 'ein)
-(require 'ein)
-(require 'ein-notebook)
-(require 'ein-subpackages)
+;; (require-package 'ein)
+;; (require 'ein)
+;; (require 'ein-notebook)
+;; (require 'ein-subpackages)
 
 (defun require-package (package)
   (setq-default highlight-tabs t)
@@ -36,7 +36,7 @@
 (load "~/.emacs.d/cplusplus.el")
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/magit.el")
-(load "~/.emacs.d/irc.el")
+;; (load "~/.emacs.d/irc.el")
 
 ;; Appearance
 (set-face-attribute 'default nil :height 80)
