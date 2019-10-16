@@ -3,9 +3,9 @@
 (require 'elpy)
 (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
 ;; (setq elpy-rpc-python-command "/usr/local/bin/python3")
-(setq python-shell-interpreter "jupyter-console"
-    python-shell-interpreter-args "--simple-prompt -i")
-
+(setq python-shell-interpreter "ipython"
+    python-shell-interpreter-args "--simple-prompt")
+ 
 (setq elpy-rpc-backend "jedi")
 (elpy-enable)
 (require 'virtualenvwrapper)
