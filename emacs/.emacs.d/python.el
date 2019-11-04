@@ -71,3 +71,6 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+(evil-leader/set-key "en" 'flymake-goto-next-error)
+(evil-leader/set-key "ep" 'flymake-goto-prev-error)
