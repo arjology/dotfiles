@@ -117,10 +117,10 @@ bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym Left resize shrink width 50 px or 50 ppt
+        bindsym Down resize grow height 50 px or 50 ppt
+        bindsym Up resize shrink height 50 px or 50 ppt
+        bindsym Right resize grow width 50 px or 50 ppt
         bindsym Return mode "default"
 }
 bindsym $super+r mode "resize"
