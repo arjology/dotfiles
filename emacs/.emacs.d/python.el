@@ -3,9 +3,9 @@
 (require 'elpy)
 (setq elpy-modules (delete 'elpy-module-highlight-indentation elpy-modules))
 ;; (setq elpy-rpc-python-command "/usr/local/bin/python3")
-(setq python-shell-interpreter "ipython"
-    python-shell-interpreter-args "--simple-prompt")
- 
+(setq python-shell-interpreter "jupyter-console"
+    python-shell-interpreter-args "--simple-prompt -i")
+
 (setq elpy-rpc-backend "jedi")
 (elpy-enable)
 (require 'virtualenvwrapper)
@@ -71,6 +71,3 @@
   )
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
-
-(evil-leader/set-key "en" 'flymake-goto-next-error)
-(evil-leader/set-key "ep" 'flymake-goto-prev-error)
