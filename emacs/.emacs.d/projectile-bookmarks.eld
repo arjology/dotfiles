@@ -1,1 +1,0 @@
-("~/Documents/data_science/" "~/dotfiles/")

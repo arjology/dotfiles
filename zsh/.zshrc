@@ -101,7 +101,7 @@ export LANG=en_US.UTF-8
 source $HOME/.purepower
 #PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 PATH=$HOME/.local/bin:$PATH
-SCAPE_HOME=$HOME/libs/reconstruction_localization_pipeline
+SCAPE_HOME=$HOME/code/reconstruction_localization_pipeline
 PATH=$PATH:$SCAPE_HOME/bazel-python/bin
 POWERLEVEL10k_MODE='nerdfont-complete'
 POWERLEVEL10k_LEFT_PROMPT_ELEMENTS=(dir vcs status ssh)
