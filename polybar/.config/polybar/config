@@ -1,356 +1,473 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+; 07 nov. 2018 - Electro7
+; Polybar 3.2.1
+;
+;==========================================================
+
+;=====================================================
+;   colors
+;=====================================================
+[colors]
+foreground = ${xrdb:foreground}
+background = ${xrdb:background}
+highlight = ${xrdb:color10}
+highback = ${xrdb:color2}
+warn = ${xrdb:color1}
+alert = ${xrdb:color3}
+section = ${xrdb:color8}
+section_off = ${xrdb:color0}
+black = #000000
+
+;=====================================================
+;   variables
+;=====================================================
+[variables]
+bar-height = 20
+bar-border-size = 1
+
+label-padding = 1
+label-maxlen = 50
+
+eth=eno1
+wlan=wlan0
+
+;=====================================================
+;   fonts
+;=====================================================
+[fonts]
+font-0 = "Inconsolata Nerd Font:size=10:antialias=true;2"
+font-1 = "Inconsolata for Powerline:size=10:antialias=true;3"
+font-2 = "Inconsolata Nerd Font:size=10:antialias=true;3"
+; font-0 = NotoSans-Regular:size=9;0
+; font-1 = Material\ Icons:size=11;2
+; font-2 = xos4\ Terminus:size=10;0
+; font-3 = Siji:pixelsize=11;1
+; font-4 = FontAwesome:size=11;0
+
+;=====================================================
+;   settings
+;=====================================================
+[settings]
+screenchange-reload = true
+
+;=====================================================
+;   global/wm
+;=====================================================
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+;=====================================================
+;   bar/top
+;=====================================================
 [bar/top]
-monitor = HDMI-0 
-width = 100%
-height = 34
+monitor = DP-4 
+height = ${variables.bar-height}
+bottom = false
+fixed-center = false
 
-background = #00000000
-foreground = #ccffffff
+border-bottom-size = ${variables.bar-border-size}
+border-color = ${colors.black}
 
-line-color = ${bar/bottom.background}
-line-size = 16
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-spacing = 2
-padding-right = 5
-module-margin = 4
+font-0 = ${fonts.font-0}
+font-1 = ${fonts.font-1}
+font-2 = ${fonts.font-2}
 
-font-0 = NotoSans-Regular:size=8;-1
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8:antialias=false;-2
-font-3 = FontAwesome:size=10;0
+modules-left = ws_icon i3 lhb lbs ti_icon lsb title
+modules-center =
+modules-right = spotify volume cpu temperature memory eth date time
 
-modules-left = powermenu
-modules-right = filesystem wired-network date
+;tray-position = right
+;tray-detached = false
+;tray-maxsize = 15
+;tray-transparent = false
+;tray-background = ${colors.highlight}
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-padding = 1
+;tray-scale = 1.0
 
-[bar/bottom]
-monitor = HDMI-0
-bottom = true
-width = 100%
-height = 27
+;=====================================================
+;   section/base
+;=====================================================
+[section/base]
+format-prefix = %{T2}%{T-}
+format-prefix-foreground = ${colors.section}
+format-prefix-background = ${colors.background}
+format-warn-prefix = %{T2}%{T-}
+format-warn-prefix-foreground = ${colors.warn}
+format-warn-prefix-background = ${colors.background}
+format-connected-prefix = %{T2}%{T-}
+format-connected-prefix-foreground = ${colors.section}
+format-connected-prefix-background = ${colors.background}
+format-disconnected-prefix = %{T2}%{T-}
+format-disconnected-prefix-foreground = ${colors.section_off}
+format-disconnected-prefix-background = ${colors.background}
+format-volume-prefix = %{T2}%{T-}
+format-volume-prefix-foreground = ${colors.section}
+format-volume-prefix-background = ${colors.background}
+format-muted-prefix = %{T2}%{T-}
+format-muted-prefix-foreground = ${colors.alert}
+format-muted-prefix-background = ${colors.background}
+format-charging-prefix = %{T2}%{T-}
+format-charging-prefix-foreground = ${colors.section}
+format-charging-prefix-background = ${colors.background}
+format-discharging-prefix = %{T2}%{T-}
+format-discharging-prefix-foreground = ${colors.section}
+format-discharging-prefix-background = ${colors.background}
+format-full-prefix = %{T2}%{T-}
+format-full-prefix-foreground = ${colors.section}
+format-full-prefix-background = ${colors.background}
 
-background = ${bar/top.background}
-foreground = ${bar/top.foreground}
+format-foreground = ${colors.foreground}
+format-background = ${colors.section}
+format-warn-foreground = ${colors.foreground}
+format-warn-background = ${colors.warn}
+format-connected-foreground = ${colors.foreground}
+format-connected-background = ${colors.section}
+format-disconnected-foreground = ${colors.foreground}
+format-disconnected-background = ${colors.section_off}
+format-volume-foreground = ${colors.foreground}
+format-volume-background = ${colors.section}
+format-muted-foreground = ${colors.black}
+format-muted-background = ${colors.alert}
+format-charging-foreground = ${colors.foreground}
+format-charging-background = ${colors.section}
+format-discharging-foreground = ${colors.foreground}
+format-discharging-background = ${colors.section}
+format-full-foreground = ${colors.foreground}
+format-full-background = ${colors.section}
 
-line-color = ${bar/top.background}
-line-size = 2
+format-suffix = %{T2}%{T-}
+format-suffix-foreground = ${colors.background}
+format-suffix-background = ${colors.section}
+format-warn-suffix = %{T2}%{T-}
+format-warn-suffix-foreground = ${colors.background}
+format-warn-suffix-background = ${colors.warn}
+format-connected-suffix = %{T2}%{T-}
+format-connected-suffix-foreground = ${colors.background}
+format-connected-suffix-background = ${colors.section}
+format-disconnected-suffix = %{T2}%{T-}
+format-disconnected-suffix-foreground = ${colors.background}
+format-disconnected-suffix-background = ${colors.section_off}
+format-volume-suffix = %{T2}%{T-}
+format-volume-suffix-foreground = ${colors.background}
+format-volume-suffix-background = ${colors.section}
+format-muted-suffix = %{T2}%{T-}
+format-muted-suffix-foreground = ${colors.background}
+format-muted-suffix-background = ${colors.alert}
+format-charging-suffix = %{T2}%{T-}
+format-charging-suffix-foreground = ${colors.background}
+format-charging-suffix-background = ${colors.section}
+format-discharging-suffix = %{T2}%{T-}
+format-discharging-suffix-foreground = ${colors.background}
+format-discharging-suffix-background = ${colors.section}
+format-full-suffix = %{T2}%{T-}
+format-full-suffix-foreground = ${colors.background}
+format-full-suffix-background = ${colors.section}
 
-spacing = 3
-padding-right = 4
-module-margin-left = 0
-module-margin-right = 6
+label-padding = ${variables.label-padding}
+label-warn-padding = ${variables.label-padding}
+label-connected-padding = ${variables.label-padding}
+label-disconnected-padding = ${variables.label-padding}
+label-volume-padding = ${variables.label-padding}
+label-muted-padding = ${variables.label-padding}
+label-charging-padding = ${variables.label-padding}
+label-discharging-padding = ${variables.label-padding}
+label-full-padding = ${variables.label-padding}
 
-font-0 = NotoSans-Regular:size=8;0
-font-1 = unifont:size=6;-3
-font-2 = FontAwesome:size=8;-2
-font-3 = NotoSans-Regular:size=8;-1
-font-4 = MaterialIcons:size=10;-1
-font-5 = Termsynu:size=8:antialias=false;0
+;=====================================================
+;   module/lhb
+;=====================================================
+[module/lhb]
+type = custom/text
 
-modules-left = i3
-modules-right = cpu memory
+content = %{T2}%{T-}
+content-foreground = ${colors.highlight}
+content-background = ${colors.background}
 
-[module/filesystem]
-type = internal/fs
+;=====================================================
+;   module/lbs
+;=====================================================
+[module/lbs]
+type = custom/text
 
-; Mountpoints to display
-mount-0 = /
-mount-1 = /store
+content = %{T2}%{T-}
+content-foreground = ${colors.background}
+content-background = ${colors.section}
 
-; Seconds to sleep between updates
-; Default: 30
-interval = 10
+;=====================================================
+;   module/lsb
+;=====================================================
+[module/lsb]
+type = custom/text
 
-; Display fixed precision values
-; Default: false
-fixed-values = true
+content = %{T2}%{T-}
+content-foreground = ${colors.section}
+content-background = ${colors.background}
 
-; Spacing between entries
-; Default: 2
-spacing = 4
+;=====================================================
+;   module/lbh
+;=====================================================
+[module/lbh]
+type = custom/text
 
-[module/backlight]
-type = internal/xbacklight
-format = <ramp> <bar>
+content = %{T2}%{T-}
+content-foreground = ${colors.background}
+content-background = ${colors.highlight}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+;=====================================================
+;   module/ws_icon
+;=====================================================
+[module/ws_icon]
+type = custom/text
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-font = 3
-bar-indicator-foreground = #ff
-bar-fill = ─
-bar-fill-font = 3
-bar-fill-foreground = #c9665e
-bar-empty = ─
-bar-empty-font = 3
-bar-empty-foreground = #44
+content = %{T3} 拓  %{T-}
+content-foreground = ${colors.background}
+content-background = ${colors.highlight}
 
-[module/battery]
-type = internal/battery
-full-at = 98
+;=====================================================
+;   module/ti_icon
+;=====================================================
+[module/ti_icon]
+type = custom/text
 
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
+content = %{T3} 类 %{T-}
+content-foreground = ${colors.highlight}
+content-background = ${colors.section}
 
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = #f53c3c
-ramp-capacity-1 = 
-ramp-capacity-1-foreground = #ffa900
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-bar-capacity-width = 10
-bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
-bar-capacity-fill = █
-bar-capacity-fill-foreground = #ddffffff
-bar-capacity-fill-font = 3
-bar-capacity-empty = █
-bar-capacity-empty-font = 3
-bar-capacity-empty-foreground = #44ffffff
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
-
+;=====================================================
+;   module/i3
+;=====================================================
 [module/i3]
 type = internal/i3
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = true
+pin-workspaces = true
+fuzzy-match = true
 
-ws-icon-0 = term;
-ws-icon-1 = web;
-ws-icon-2 = code;
-ws-icon-3 = music;
-ws-icon-4 = irssi;
-ws-icon-default = 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 0;
 
-format = <label-state> <label-mode>
+format-background = ${colors.highlight}
+format-foreground = ${colors.background}
 
-label-dimmed-underline = ${BAR.background}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.highlight}
+label-unfocused-foreground = ${colors.highback}
+label-unfocused-background = ${colors.highlight}
+label-visible-foreground = ${colors.highback}
+label-visible-background = ${colors.highlight}
+label-urgent-foreground = ${colors.warn}
+label-urgent-background = ${colors.highlight}
 
-label-active = %icon%
-label-active-foreground = #fff
-label-active-background = #773f3f3f
-label-active-underline = #c9665e
-label-active-font = 4
-label-active-padding = 4
+label-focused = %{T3}%icon% %{T-}
+label-unfocused = %{T3}%icon% %{T-}
+label-visible = %{T3}%icon% %{T-}
+label-urgent = %{T3}%icon% %{T-}
 
-label-occupied = %icon%
-label-occupied-foreground = #dd
-label-occupied-underline = #666
-label-occupied-font = 4
-label-occupied-padding = 4
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${colors.highlight}
+label-mode-foreground = ${colors.warn}
 
-label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
+;=====================================================
+;   module/title
+;=====================================================
+[module/title]
+type = internal/xwindow
 
-label-empty = %icon%
-label-empty-foreground = #55
-label-empty-font = 4
-label-empty-padding = 4
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 1
 
-label-monocle = 
-label-monocle-underline = ${module/i3.label-active-underline}
-label-monocle-background = #33ffffff
-label-monocle-padding = 2
+label = %title%
+label-maxlen = 60
+label-empty =
 
-label-locked = 
-label-locked-foreground = #bd2c40
-label-locked-underline = ${module/i3.label-monocle-underline}
-label-locked-padding = ${module/i3.label-monocle-padding}
-
-label-sticky = 
-label-sticky-foreground = #fba922
-label-sticky-underline = ${module/i3.label-monocle-underline}
-label-sticky-padding = ${module/i3.label-monocle-padding}
-
-label-private = 
-label-private-foreground = #bd2c40
-label-private-underline = ${module/i3.label-monocle-underline}
-label-private-padding = ${module/i3.label-monocle-padding}
-
-[module/i3-tmp]
-type = internal/i3
-format = <label-state>
-
-label-active = 
-label-active-padding = 1
-label-occupied = 
-label-occupied-padding = 1
-label-empty = 
-label-empty-padding = 1
-
+;=====================================================
+;   module/cpu
+;=====================================================
 [module/cpu]
 type = internal/cpu
-interval = 0.5
-format = <label> <ramp-coreload>
-label = CPU
+inherit = section/base
+interval = 1
 
-ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = #aaff77
-ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = #aaff77
-ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = #aaff77
-ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = #aaff77
-ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
-ramp-coreload-4-foreground = #fba922
-ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
-ramp-coreload-5-foreground = #fba922
-ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
-ramp-coreload-6-foreground = #ff5555
-ramp-coreload-7 = █
-ramp-coreload-7-font = 2
-ramp-coreload-7-foreground = #ff5555
+label = %{T1}龍%{T-} %percentage%%
 
-[module/date]
-type = internal/date
-date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
-
+;=====================================================
+;   module/memory
+;=====================================================
 [module/memory]
 type = internal/memory
-format = <label> <bar-used>
-label = RAM
+inherit = section/base
+interval = 3
 
-bar-used-width = 30
-bar-used-foreground-0 = #aaff77
-bar-used-foreground-1 = #aaff77
-bar-used-foreground-2 = #fba922
-bar-used-foreground-3 = #ff5555
-bar-used-indicator = |
-bar-used-indicator-font = 6
-bar-used-indicator-foreground = #ff
-bar-used-fill = ─
-bar-used-fill-font = 6
-bar-used-empty = ─
-bar-used-empty-font = 6
-bar-used-empty-foreground = #444444
+label = %{T1}%{T-} %gb_used:2%
 
-[module/mpd]
-type = internal/mpd
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-
-icon-play = 
-icon-pause = 
-icon-stop = 
-icon-prev = 
-icon-next = 
-icon-random = 
-icon-repeat = 
-
-toggle-on-foreground =
-toggle-off-foreground = #55
-
-bar-progress-width = 45
-bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
-bar-progress-indicator = |
-bar-progress-indicator-foreground = #ff
-bar-progress-indicator-font = 3
-bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
-bar-progress-fill-font = 3
-bar-progress-empty = ─
-bar-progress-empty-font = 3
-bar-progress-empty-foreground = #44
-
-[module/wireless-network]
+;=====================================================
+;   module/wifi
+;=====================================================
+[module/wifi]
 type = internal/network
-interface = net1
-interval = 3.0
-ping-interval = 10
+inherit = section/base
+interface = ${variables.wlan}
+interval = 1
+accumulate-stats = false
 
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
-label-disconnected =    not connected
-label-disconnected-foreground = #66
+label-connected = "%{T1}直%{T-} %{T3}%{T-} %downspeed:% %{T3}%{T-} %upspeed:%"
+label-disconnected = "%{T1}%{F#1D1F21}直%{F- T-}"
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
-
-[module/wired-network]
+;=====================================================
+;   module/eth
+;=====================================================
+[module/eth]
 type = internal/network
-interface = enp1s0
-interval = 3.0
+inherit = section/base
+interface = ${variables.eth}
+interval = 1
+accumulate-stats = false
 
-label-connected =    %{T3}%local_ip%%{T-}
-label-disconnected-foreground = #66
+label-connected = "%{T1}﴿%{T-}  %{T3}%{T-} %downspeed:% %{T3}%{T-} %upspeed:%"
+label-disconnected = "%{T1}%{F#1D1F21}﴿%{F- T-}"
 
-[module/volume]
-type = internal/volume
-speaker-mixer = Speaker
-headphone-mixer = Headphone
-headphone-id = 9
-
-format-volume = <ramp-volume> <label-volume>
-label-muted =   muted
-label-muted-foreground = #66
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-
-[module/powermenu]
-type = custom/menu
-
-format-padding = 5
-
-label-open = 
-label-close = 
-
-menu-0-0 = Terminate WM
-menu-0-0-foreground = #fba922
-menu-0-0-exec = bspc quit -1
-menu-0-1 = Reboot
-menu-0-1-foreground = #fba922
-menu-0-1-exec = menu_open-1
-menu-0-2 = Power off
-menu-0-2-foreground = #fba922
-menu-0-2-exec = menu_open-2
-
-menu-1-0 = Cancel
-menu-1-0-foreground = #fba922
-menu-1-0-exec = menu_open-0
-menu-1-1 = Reboot
-menu-1-1-foreground = #fba922
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = Power off
-menu-2-0-foreground = #fba922
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = #fba922
-menu-2-1-exec = menu_open-0
-
-[module/clock]
+;=====================================================
+;   module/date
+;=====================================================
+[module/date]
 type = internal/date
-interval = 2
-date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+inherit = section/base
+interval = 1
+date = %a %d %b
 
-; vim:ft=dosini
+label = %{T1}%{T-} %date%
+
+;=====================================================
+;   module/time
+;=====================================================
+[module/time]
+type = internal/date
+interval = 1
+time = %H:%M
+
+format-prefix = %{T2}%{T-}
+format-prefix-foreground = ${colors.highlight}
+format-prefix-background = ${colors.background}
+format-foreground = ${colors.black}
+format-background = ${colors.highlight}
+
+label = " %time% "
+
+;=====================================================
+;   module/volume
+;=====================================================
+[module/volume]
+type = internal/alsa
+inherit = section/base
+interval = 1
+
+label-volume = %{T1}墳%{T-} %percentage:%%
+label-muted = %{T1}婢%{T-}
+
+;=====================================================
+;   module/backlight
+;=====================================================
+[module/backlight]
+type = internal/xbacklight
+inherit = section/base
+
+;output = eDP1
+enable-scroll = false
+
+format = <label>
+label = %{T1}%{T-} %percentage:%%
+
+;=====================================================
+;   module/battery
+;=====================================================
+[module/battery]
+type = internal/battery
+inherit = section/base
+battery = BAT0
+adapter = AC
+full-at = 95
+
+format-charging = <label-charging>
+label-charging = %{T1}%{T-} %percentage:%%
+
+format-discharging = <label-discharging>
+label-discharging = %{T1}%{T-} %percentage:%%
+
+format-full = <label-full>
+label-full = %{T1}%{T-} %percentage:%%
+
+;=====================================================
+;   module/temperature
+;=====================================================
+[module/temperature]
+type = internal/temperature
+inherit = section/base
+thermal-zone = 0
+warn-temperature = 70
+
+label = %{T1}%{T-} %temperature-c%
+label-warn = %{T1}%{T-} %temperature-c%
+
+;=====================================================
+;   module/updates
+;=====================================================
+[module/updates]
+type = custom/script
+inherit = section/base
+
+format-prefix = %{T2}%{T-}
+format-prefix-foreground = ${colors.warn}
+format-prefix-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-background = ${colors.warn}
+format-suffix = %{T2}%{T-}
+format-suffix-foreground = ${colors.background}
+format-suffix-background = ${colors.warn}
+label-padding = ${variables.label-padding}
+
+exec = ~/bin/arch_updates.sh
+interval = 600
+label = %{T1}%{T-} %output%
+
+;=====================================================
+;   module/spotify
+;=====================================================
+[module/spotify]
+type = custom/script
+inherit = section/base
+
+interval = 10
+label = %{T1}%output%%{T-}
+format-prefix = "  "
+format = <label>
+exec = python   ~/.config/polybar/spotify.py  -f '{play_pause} {song} - {artist} - {album}'
+
+format-underline = #1db954

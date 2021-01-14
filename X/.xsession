@@ -1,3 +1,4 @@
+xrdb -I$HOME ~/.Xresources
 setxkbmap -layout "us"
 TERM=xterm-256color
 export LANGUAGE=en_US.utf8

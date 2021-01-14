@@ -1,2 +1,2 @@
-xrdb ~/.Xresources
+xrdb -I$HOME ~/.Xresources
 setxkbmap us
